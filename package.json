@@ -1,10 +1,18 @@
 {
   "name": "hungry-for-apples",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "No frills eating burgers.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "jquery": "^3.4.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,10 +24,5 @@
   "bugs": {
     "url": "https://github.com/shrfu31/hungry-for-apples/issues"
   },
-  "homepage": "https://github.com/shrfu31/hungry-for-apples#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "mysql": "^2.17.1"
-  }
+  "homepage": "https://github.com/shrfu31/hungry-for-apples#readme"
 }
