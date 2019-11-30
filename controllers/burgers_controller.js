@@ -3,11 +3,11 @@ const express=require(`express`);
 const router = express.Router();
 
 //creating global variable using let to be used inside routes
-const burger = require(`../models/model-burger.js`);
+const db = require(`./models`);
 
 //Creating the routes the controller handles and directs
 router.get("/", (req, res) =>{
-    burger.all((dbInfo) =>{
+    db.Burger.findAll((dbInfo) =>{
         let objectForHandlebars= {
             burgers: dbInfo
         };
@@ -21,7 +21,7 @@ router.post("/api/newburger", function(req, res) {
   console.log(`This is req.body.data:`, req.body.data);
   console.log(`This is req.body.data.burger_name:`, req.body.data.burger_name);
 
-  burger.create([
+  db.Burger.create([
     "burger_name"], [req.body.data.burger_name], function(result) {
     
     // Send back the ID of the new quote
@@ -39,7 +39,7 @@ router.put("/api/burger/devour/:id", function(req, res) {
   console.log(req);
   var condition = "id = " + req.params.id;
 
-  burger.update({
+  db.Burger.update({
     devoured: req.body.devoured
   }, condition, function(result) {
     if (result.changedRows == 0) {
