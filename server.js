@@ -1,7 +1,7 @@
-
 const express = require("express");
+const db = require("./models");
 
-var PORT = process.env.PORT || 7080;
+const PORT = process.env.PORT || 7080;
 
 const app = express();
 
@@ -15,16 +15,20 @@ app.use(express.json());
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({  partialsDir: "views/partials",defaultLayout: "main" }));
+app.engine(
+  "handlebars",
+  exphbs({ partialsDir: "views/partials", defaultLayout: "main" })
+);
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 const routes = require("./controllers/burgers_controller.js");
 
 app.use(routes);
-
-// Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
-  // Log (server-side) when our server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+db.sequelize.sync().then(function() {
+  // Start our server so that it can begin listening to client requests.
+  app.listen(PORT, function() {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+  });
 });

@@ -1,2 +1,2 @@
 # burger
-No frills eating burgers. 
+Sequelize version of burgers

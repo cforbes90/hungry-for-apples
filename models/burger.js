@@ -1,7 +1,12 @@
-module.exports = funciton (sequelize, DataTypes) {
-    const burger = sequelize.define ("Burger", {
-        burger_name: DataTypes.STRING,
-        devoured: DataTypes.BOOLEAN
+module.exports = function (sequelize, DataTypes) {
+    const Burger = sequelize.define ('Burger', {
+        burger_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        devoured: {
+            type: DataTypes.TINYINT
+        }
     })
     return Burger;
 

@@ -3,7 +3,7 @@ const express=require(`express`);
 const router = express.Router();
 
 //creating global variable using let to be used inside routes
-const db = require(`./models`);
+const db = require(`../models`);
 
 //Creating the routes the controller handles and directs
 router.get("/", (req, res) =>{
